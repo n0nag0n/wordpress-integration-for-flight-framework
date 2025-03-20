@@ -29,7 +29,7 @@ This plugin is perfect for developers who want to build custom applications or A
 
 1. Upload the `flight-integration` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Go to Settings > Flight Integration to configure the plugin
+3. Go to Settings > Flight Framework to configure the plugin
 4. Set the vendor path to your Flight installation or use Composer to install Flight
 5. Configure your app folder path and create the folder structure
 6. Start building your Flight application!
@@ -58,7 +58,7 @@ Define your routes in the `config/routes.php` file in your app folder. See the s
 
 == Screenshots ==
 
-1. Flight Integration settings page
+1. Flight Framework settings page
 2. Created folder structure
 
 == Usage Examples ==
@@ -111,4 +111,4 @@ Flight::route('GET /api/users', [app\controllers\ApiController::class, 'getUsers
 == Upgrade Notice ==
 
 = 1.0.0 =
-Initial release of the Flight Integration plugin for WordPress.
+Initial release of the Flight Framework Integration plugin for WordPress.

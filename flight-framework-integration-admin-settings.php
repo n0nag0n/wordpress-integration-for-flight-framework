@@ -40,8 +40,8 @@ add_filter('do_parse_request', function($do_parse, $wp) {
 // Admin settings page
 add_action('admin_menu', function() {
     add_options_page(
-        'Flight Integration Settings',
-        'Flight Integration',
+        'Flight Framework Settings',
+        'Flight Framework',
         'manage_options',
         'flight-integration',
         'flight_integration_settings_page'
@@ -134,7 +134,7 @@ add_action('admin_init', function() use ($flight_options) {
 function flight_integration_settings_page() {
     ?>
     <div class="wrap">
-        <h1>Flight Integration Settings</h1>
+        <h1>Flight Framework Integration Settings</h1>
         <form method="post" action="options.php">
             <?php
             settings_fields('flight_integration_group');
