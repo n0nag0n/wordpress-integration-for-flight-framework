@@ -4,4 +4,5 @@ To install this plugin in a WordPress site, download this github repo as a zip.
 Then, in your WordPress admin panel, go to Plugins > Add New > Upload Plugin.
 Upload the zip file and click Install Now. After the installation is complete, click Activate Plugin to activate the plugin.
 
-If you navigate to the Settings>Flight Framework
+If you navigate to the Settings>Flight Framework area, you will see the plugin settings page to complete the setup.
+

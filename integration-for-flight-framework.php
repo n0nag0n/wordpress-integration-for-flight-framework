@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Flight Framework Integration
+Plugin Name: Integration for Flight Framework
 Description: Integrates the Flight framework with WordPress.
 Version: 1.0.0
 Author: n0nag0n
@@ -67,8 +67,6 @@ if (file_exists($vendor_path)) {
     $bundled_flight = FLIGHT_INTEGRATION_DIR . 'core-master/flight/Flight.php';
     if (file_exists($bundled_flight)) {
         require_once $bundled_flight;
-    } else {
-        // wp_die('Flight framework not found. Please install it via Composer or provide a valid vendor path in settings.');
     }
 }
 

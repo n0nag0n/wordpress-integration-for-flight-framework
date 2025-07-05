@@ -40,8 +40,8 @@ add_filter('do_parse_request', function($do_parse, $wp) {
 // Admin settings page
 add_action('admin_menu', function() {
     add_options_page(
-        'Flight Framework Settings',
-        'Flight Framework',
+        'Integration for Flight Framework Settings',
+        'Integration for Flight Framework',
         'manage_options',
         'flight-integration',
         'flight_integration_settings_page'
@@ -67,7 +67,7 @@ add_action('admin_init', function() use ($flight_options) {
     add_settings_field('app_folder_path', 'app/ Folder Path', function() use ($flight_options) {
         echo '<input type="text" name="flight_integration_options[app_folder_path]" value="' . esc_attr($flight_options['app_folder_path']) . '" class="regular-text">';
         echo '<p class="description">Path to your custom Flight code resides (e.g., ' . esc_html(dirname(ABSPATH)) . '/app). This is usually the folder where you store your controllers, helper classes, views, etc.</p>';
-		echo '<p class="description">You can create this folder structure by clicking the button below. If you do not want to create this folder structure, you can manually edit the plugin file at <code>'.esc_html(FLIGHT_INTEGRATION_DIR).'/flight-framework-integration.php</code>, but it is highly recommended to create an app/ folder so your settings aren\'t overwritten by future plugin updates.</p>';
+		echo '<p class="description">You can create this folder structure by clicking the button below. If you do not want to create this folder structure, you can manually edit the plugin file at <code>'.esc_html(FLIGHT_INTEGRATION_DIR).'integration-for-flight-framework.php</code>, but it is highly recommended to create an app/ folder so your settings aren\'t overwritten by future plugin updates.</p>';
         echo '<button type="button" id="create_folder_structure" class="button button-secondary">Create Folder Structure</button>';
         echo '<span id="folder_structure_result" style="margin-left: 10px;"></span>';
         
