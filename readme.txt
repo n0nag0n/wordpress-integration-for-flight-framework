@@ -2,7 +2,7 @@
 Contributors: n0nag0n
 Tags: framework, flight, rest, api, mvc
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 1.0.0
 Requires PHP: 7.4
 License: GPL v2 or later
