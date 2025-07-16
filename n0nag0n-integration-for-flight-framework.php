@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Integration for Flight Framework
+Plugin Name: n0nag0n Integration for Flight Framework
 Description: Integrates the Flight framework with WordPress.
 Version: 1.0.0
 Author: n0nag0n
@@ -9,7 +9,7 @@ License: GPLv2 or later
 
 // Prevent direct access to this file
 if (!defined('ABSPATH')) {
-    exit;
+	exit;
 }
 
 // Define plugin constants
@@ -17,10 +17,10 @@ define('FLIGHT_INTEGRATION_DIR', plugin_dir_path(__FILE__));
 
 // Load plugin options
 $flight_options = get_option('flight_integration_options', [
-    'vendor_path' => FLIGHT_INTEGRATION_DIR . 'vendor/autoload.php',
+	'vendor_path' => FLIGHT_INTEGRATION_DIR . 'vendor/autoload.php',
 	'app_folder_path' => dirname(ABSPATH) . '/app',
-    'terminate_request' => true, // Default to terminating the request
-    'use_wp_db' => true, // Default to using WordPress DB
+	'terminate_request' => true, // Default to terminating the request
+	'use_wp_db' => true, // Default to using WordPress DB
 ]);
 
 // Download and install Flight if not already installed when activated
@@ -61,13 +61,13 @@ register_activation_hook(__FILE__, function() {
 // Load Flight framework
 $vendor_path = $flight_options['vendor_path'];
 if (file_exists($vendor_path)) {
-    require_once $vendor_path;
+	require_once $vendor_path;
 } else {
-    // Fallback to bundled Flight if available (optional, see notes below)
-    $bundled_flight = FLIGHT_INTEGRATION_DIR . 'core-master/flight/Flight.php';
-    if (file_exists($bundled_flight)) {
-        require_once $bundled_flight;
-    }
+	// Fallback to bundled Flight if available (optional, see notes below)
+	$bundled_flight = FLIGHT_INTEGRATION_DIR . 'core-master/flight/Flight.php';
+	if (file_exists($bundled_flight)) {
+		require_once $bundled_flight;
+	}
 }
 
 // Load the plugin settings

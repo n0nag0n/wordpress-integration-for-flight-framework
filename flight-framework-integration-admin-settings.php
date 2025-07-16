@@ -9,14 +9,14 @@ add_filter('do_parse_request', function($do_parse, $wp) {
     $router = Flight::router();
     $request = Flight::request();
     $flight_options = get_option('flight_integration_options', []);
-	$app_folder_path = $flight_options['app_folder_path'] ?? dirname(ABSPATH) . '/app';
+    $app_folder_path = $flight_options['app_folder_path'] ?? dirname(ABSPATH) . '/app';
     $terminate_request = $flight_options['terminate_request'] ?? true;
-	if(file_exists($app_folder_path . '/config/bootstrap.php')) {
-		// Load the bootstrap file if it exists
-		require $app_folder_path . '/config/bootstrap.php';
-	} else {
-		// if you want to manual configure your stuff, you can do that here.
-	}
+    if(file_exists($app_folder_path . '/config/bootstrap.php')) {
+        // Load the bootstrap file if it exists
+        require $app_folder_path . '/config/bootstrap.php';
+    } else {
+        // if you want to manual configure your stuff, you can do that here.
+    }
 
     $route = $router->route($request);
     if ($route !== false) {
@@ -40,8 +40,8 @@ add_filter('do_parse_request', function($do_parse, $wp) {
 // Admin settings page
 add_action('admin_menu', function() {
     add_options_page(
-        'Integration for Flight Framework Settings',
-        'Integration for Flight Framework',
+        'n0nag0n Integration for Flight Framework Settings',
+        'n0nag0n Integration for Flight Framework',
         'manage_options',
         'flight-integration',
         'flight_integration_settings_page'
@@ -63,11 +63,11 @@ add_action('admin_init', function() use ($flight_options) {
         echo '<input type="text" name="flight_integration_options[vendor_path]" value="' . esc_attr($flight_options['vendor_path']) . '" class="regular-text">';
         echo '<p class="description">Path to Composer\'s autoload.php (e.g., ' . esc_html(FLIGHT_INTEGRATION_DIR) . 'vendor/autoload.php).</p>';
     }, 'flight-integration', 'flight_integration_main');
-	
+    
     add_settings_field('app_folder_path', 'app/ Folder Path', function() use ($flight_options) {
         echo '<input type="text" name="flight_integration_options[app_folder_path]" value="' . esc_attr($flight_options['app_folder_path']) . '" class="regular-text">';
         echo '<p class="description">Path to your custom Flight code resides (e.g., ' . esc_html(dirname(ABSPATH)) . '/app). This is usually the folder where you store your controllers, helper classes, views, etc.</p>';
-		echo '<p class="description">You can create this folder structure by clicking the button below. If you do not want to create this folder structure, you can manually edit the plugin file at <code>'.esc_html(FLIGHT_INTEGRATION_DIR).'integration-for-flight-framework.php</code>, but it is highly recommended to create an app/ folder so your settings aren\'t overwritten by future plugin updates.</p>';
+        echo '<p class="description">You can create this folder structure by clicking the button below. If you do not want to create this folder structure, you can manually edit the plugin file at <code>'.esc_html(FLIGHT_INTEGRATION_DIR).'integration-for-flight-framework.php</code>, but it is highly recommended to create an app/ folder so your settings aren\'t overwritten by future plugin updates.</p>';
         echo '<button type="button" id="create_folder_structure" class="button button-secondary">Create Folder Structure</button>';
         echo '<span id="folder_structure_result" style="margin-left: 10px;"></span>';
         
@@ -134,7 +134,7 @@ add_action('admin_init', function() use ($flight_options) {
 function flight_integration_settings_page() {
     ?>
     <div class="wrap">
-        <h1>Flight Framework Integration Settings</h1>
+        <h1>n0nag0n Integration for Flight Framework Settings</h1>
         <form method="post" action="options.php">
             <?php
             settings_fields('flight_integration_group');
@@ -160,13 +160,13 @@ function flight_integration_sanitize_options($input) {
 add_action('wp_ajax_flight_create_folder_structure', 'flight_create_folder_structure');
 
 function flight_create_folder_structure() {
-	global $wp_filesystem;
-	if (empty($wp_filesystem)) {
-		require_once(ABSPATH . 'wp-admin/includes/file.php');
-		WP_Filesystem();
-	}
+    global $wp_filesystem;
+    if (empty($wp_filesystem)) {
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        WP_Filesystem();
+    }
 
-	$nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
+    $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
 
     // Verify nonce for security
     if (!$nonce || !wp_verify_nonce($nonce, 'flight_create_folders')) {
@@ -231,15 +231,15 @@ class ApiSampleController {
      * Hello world example
      */
     public function hello() {
-		global $wpdb;
-		// Example of using WordPress database connection
-		$posts = [];
-		if(Flight::get(\'flight_options\')[\'use_wp_db\']) {
-			$posts = Flight::db()->query("SELECT * FROM {$wpdb->prefix}posts")->fetchAll();
-		}
+        global $wpdb;
+        // Example of using WordPress database connection
+        $posts = [];
+        if(Flight::get(\'flight_options\')[\'use_wp_db\']) {
+            $posts = Flight::db()->query("SELECT * FROM {$wpdb->prefix}posts")->fetchAll();
+        }
         Flight::json([
             "message" => "Hello from Flight API! Here\'s all the wordpress posts",
-			"posts" => $posts
+            "posts" => $posts
         ], 200, true, \'utf8\', JSON_PRETTY_PRINT);
     }
     
@@ -289,7 +289,7 @@ Flight::set(\'flight_options\', $flight_options);
 return [
     // Add other configuration here
 ];',
-		'config/services.php' => '<?php
+        'config/services.php' => '<?php
 /**
  * Flight Services File
  * 
@@ -309,11 +309,11 @@ if (!empty($flight_options[\'use_wp_db\'])) {
             $wpdb->dbuser,
             $wpdb->dbpassword,
             [
-				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-				PDO::ATTR_EMULATE_PREPARES => false,
-				PDO::ATTR_STRINGIFY_FETCHES => false,
-			]
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_STRINGIFY_FETCHES => false,
+            ]
         );
     });
 }

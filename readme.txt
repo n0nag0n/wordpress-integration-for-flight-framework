@@ -1,4 +1,4 @@
-=== Integration for Flight Framework ===
+=== n0nag0n Integration for Flight Framework ===
 Contributors: n0nag0n
 Tags: framework, flight, rest, api, mvc
 Requires at least: 5.0
@@ -8,11 +8,12 @@ Requires PHP: 7.4
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
+
 Seamlessly integrate the Flight PHP micro-framework with WordPress for building APIs and custom applications.
 
 == Description ==
 
-Integration for Flight Framework enables you to use the lightweight Flight PHP micro-framework within your WordPress site. This plugin bridges the gap between WordPress's content management capabilities and Flight's simple yet powerful routing system for building custom applications and APIs.
+n0nag0n Integration for Flight Framework enables you to use the lightweight Flight PHP micro-framework within your WordPress site. This plugin bridges the gap between WordPress's content management capabilities and Flight's simple yet powerful routing system for building custom applications and APIs.
 
 = Features =
 
@@ -58,7 +59,7 @@ Define your routes in the `config/routes.php` file in your app folder. See the s
 
 == Screenshots ==
 
-1. Flight Framework settings page
+1. n0nag0n Flight Framework settings page
 2. Created folder structure
 
 == Usage Examples ==
@@ -111,4 +112,4 @@ Flight::route('GET /api/users', [app\controllers\ApiController::class, 'getUsers
 == Upgrade Notice ==
 
 = 1.0.0 =
-Initial release of the Integration for Flight Framework plugin for WordPress.
+Initial release of the n0nag0n Integration for Flight Framework plugin for WordPress.
